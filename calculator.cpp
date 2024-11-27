@@ -186,3 +186,24 @@ double Calculator::arctan(double x) {
     }
     return result;
 }
+
+double Calculator::linearRoot(double a, double b) {
+    return -b/a;
+}
+
+pair<double, double> Calculator::quadraticRoot(double a, double b, double c) {
+    pair<double, double> result;
+    if (power(b, 2) - 4*a*c < 0) {
+        cout << "Imaginary Not Supported" << endl;
+        result.first = 0.00;
+        result.second = 0.00;
+        return result;
+    }
+
+    double vertex = -b/(2*a);
+    double determinant = power(power(b, 2) - 4*a*c, 0.5);
+    result.first = vertex - determinant;
+    result.second = vertex + determinant;
+    return result;
+}
+

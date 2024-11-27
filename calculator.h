@@ -47,6 +47,6 @@ class Calculator {
 
         // Finding Roots
         static double linearRoot(double a, double b);
-        static double quadraticRoot(double a, double b, double c);
+        static pair<double, double> quadraticRoot(double a, double b, double c);
 };
 
