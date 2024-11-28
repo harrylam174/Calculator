@@ -27,13 +27,13 @@ A simple calculator with the following features:
 
 Look at calculator.h for information about type of functions that you can use. Then, you can change the main function to perform functions as needed. Once finished, compile using:
 
-```C++
+```bash
 make
 ```
 
 and then using:
 
-```C++
+```bash
 ./result
 ```
 to output the result.
