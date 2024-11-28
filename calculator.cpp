@@ -51,7 +51,7 @@ double Calculator::divide(double x, double y) {
     return x / y;
 }
 
-void Calculator::getVersion() {
+void Calculator::getInfo() {
     cout << "Version: " << version << endl;
     cout << "Product Name: " << Calculator::name << endl;
     cout << "Company: " << Calculator::author << endl;

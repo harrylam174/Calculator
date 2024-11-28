@@ -16,8 +16,8 @@ class Calculator {
         static double root(double x, int n);
 
     public:
-        // CALCULATOR INFORMATION
-        static void getVersion();
+        // Calculator Info
+        static void getInfo();
 
         // Common Functions (+, -, x, /)
         static double add(double x, double y);
