@@ -5,8 +5,8 @@
 -  [Motivation](#motivation)
 -  [Description](#description)
 -  [Installation](#installation)
--  [Usage & Requirements](#usage&requirements)
--  [Include Test](#includetest)
+-  [Usage & Requirements](#usage-&-requirements)
+-  [Include Test](#include-test)
 
 
 ## Contributor
