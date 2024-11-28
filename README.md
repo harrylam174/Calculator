@@ -19,7 +19,7 @@ A simple calculator with the following features:
 
 -  Basic arithmetic (+, -, x, /)
 -  Advanced functions (^, log, !)
--  Trigonometric functions (sin, cos, tan, etc.)
+-  Trigonometric functions (sin, cos, tan, etc.) (of course, without using built-in functions!)
 -  Root finding functions (linear, quadratic)
 -  and more...
 
