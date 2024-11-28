@@ -20,7 +20,16 @@ A simple calculator with the following features:
 
 ## Usage
 
+You can change the main function to perform functions as needed. Once finished, compile using:
+
 ```C++
 make
+```
+
+and then using:
+
+```C++
 ./result
 ```
+
+to output the result.
