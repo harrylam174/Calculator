@@ -33,15 +33,25 @@ You can simply Git clone this project into your local repository and use it.
 
 ## Usage & Requirements
 
-The Makefile currently utilizes clang++ (c++) and C++17 for compilation, so make sure to either have VS Code set up for them or install necessary compile machine to compile this project (although you can update the Makefile to use the compiler/version as your choosing). 
+-  Compiler: clang++ (c++)
+-  Flags: -std=c++17 -Wall
 
-The header file, `calculator.h`, will store all (currently) available functions in calculator that you can use to perform math. Feel free to modify main to use/test these functionalities!
-After you finish cloning and make all necessary modification, you can use `make` and then `./result` to output the result of the operation(s).
+To create a program that use the calculator without testing, use `MakefileTemplate.txt` as a template on how to create a Makefile, and use `main.cpp` (**NOT** `test.cpp`) as the executable. The header file, `calculator.h`, will store all (currently) available functions in calculator that you can use to perform math. Feel free to modify main to use these functionalities!
+After cloning, creating a Makefile and make all necessary modification, you can use `make` and then `./result` to output the result of the operation(s).
 
 ## Include Test
 
-I am currently trying to use GoogleTest (Google Testing and Mocking Framework) for testing purposes, but as of right now, there are still things that I am attempting to figure it out in using the tests, so stay tune for more updates!
+For this project, I will use [Google Testing and Mocking Framework](https://github.com/google/googletest) for unit testing purposes. For more information on how to git clone and install googletest for testing, visit the provided link.
 
+Assuming that you now have googletest that is in the same directory as this project, and have installed cmake in your computer (if not, visit [Download Cmake](https://cmake.org/download/) for directions on downloading CMake, or if you have installed [Brew](https://brew.sh/), you can use `brew install cmake` to install cmake into your computer), then you can perform testing by doing the following:
 
+-  Make sure `CMakeLists.txt` exist in the current directory. This will be used to create `Makefile` later on.
+-  Now, create a new directory (`mkdir`) of any name of your choosing, and move to that directory (`cd`)
+-  Use `cmake ..` to begin creating a testing Makefile for the project
+-  After cmake completed, you will notice that there is now a `Makefile` and other couple of new files in the directory. Use `make` to compile the program
+-  For this CMakeLists.txt specifically, the executable name (which can be found in CMakeLists.txt under the name add_executable as the first string) will be `testResult`. Hence, the Makefile will create an executable named `testResult`, which you can compile using `./testResult` to output test result.
 
+As of right now, the tests include:
 
+-  Addition
+-  Subtraction
