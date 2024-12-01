@@ -1,7 +1,7 @@
 CC = c++
 CCFLAGS = -std=c++17
 EXEC = result
-SOURCES = ${wildcard *.cpp}
+SOURCES = main.cpp calculator.cpp
 OBJECTS = ${SOURCES:.cpp=.o}
 
 main: $(OBJECTS)
