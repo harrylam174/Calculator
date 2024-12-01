@@ -1,12 +1,22 @@
 #include "calculator.h"
 #include <iostream>
+#include <gtest/gtest.h>
+
+TEST(CALCULATOR, ADD) {
+    ASSERT_EQ(Calculator::add(2, 2), 4);
+    ASSERT_EQ(Calculator::add(-2, 3), 1);
+    ASSERT_EQ(Calculator::add(1, -5), -4);
+}
+
+TEST(CALCULATOR, SUBTRACT) {
+    ASSERT_EQ(Calculator::subtract(2, 2), 0);
+    ASSERT_EQ(Calculator::subtract(-2, 3), -5);
+    ASSERT_EQ(Calculator::subtract(1, -5), 6);
+}
 
 int main(int argc, const char * argv[]) {
-    // Example use case
-    double num1 = Calculator::add(2, 2);                // 2 + 2 = 4
-    double num2 = Calculator::power(3, 2);              // 3^2 = 9
-    double result = Calculator::factorial(num2 - num1); // (9 - 4)! = 120
-    cout << result << endl;
+    testing::InitGoogleTest();
+    return RUN_ALL_TESTS();
 }
 
 
