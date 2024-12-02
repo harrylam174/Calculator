@@ -1,4 +1,5 @@
 #include "calculator.h"
+#include "precedence.h"
 #include <iostream>
 #include <gtest/gtest.h>
 
@@ -47,6 +48,20 @@ TEST_P(TrigTest, TRIG) {
     else {
         ASSERT_EQ(true, satisfyTolerance(Calculator::tan(GetParam()), tan(GetParam()), 0.00001));
     }
+}
+
+TEST(PRECEDENCE, SIMPLE) {
+    ASSERT_EQ(true, Precedence::isGreaterPrecedence("*", "+"));
+    ASSERT_EQ(true, Precedence::isGreaterPrecedence("*", "-"));
+    ASSERT_EQ(true, Precedence::isGreaterPrecedence("/", "+"));
+    ASSERT_EQ(true, Precedence::isGreaterPrecedence("/", "-"));
+    ASSERT_EQ(false, Precedence::isGreaterPrecedence("+", "-"));
+    ASSERT_EQ(false, Precedence::isGreaterPrecedence("*", "/"));
+    ASSERT_EQ(true, Precedence::isGreaterPrecedence("^", "*"));
+    ASSERT_EQ(true, Precedence::isGreaterPrecedence("sin", "*"));
+    ASSERT_EQ(true, Precedence::isGreaterPrecedence("cos", "/"));
+    ASSERT_EQ(true, Precedence::isGreaterPrecedence("tan", "("));
+    ASSERT_EQ(false, Precedence::isGreaterPrecedence("^", ")"));
 }
 
 INSTANTIATE_TEST_SUITE_P(MyTrigTest, TrigTest, testing::Range(0.0, 2.20*PI, 0.20*PI));
