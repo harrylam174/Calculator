@@ -39,17 +39,17 @@ TEST(CALCULATOR, BASIC) {
 }
 
 TEST_P(TrigTest, TRIG) {
-    ASSERT_EQ(true, satisfyTolerance(Calculator::sine(GetParam()), sin(GetParam()), 0.0001));
-    ASSERT_EQ(true, satisfyTolerance(Calculator::cosine(GetParam()), cos(GetParam()), 0.0001));
+    ASSERT_EQ(true, satisfyTolerance(Calculator::sine(GetParam()), sin(GetParam()), 0.00001));
+    ASSERT_EQ(true, satisfyTolerance(Calculator::cosine(GetParam()), cos(GetParam()), 0.00001));
     if (Calculator::cosine(GetParam()) == 0) {
         ASSERT_EQ(true, isnan(Calculator::tan(GetParam())));
     }
     else {
-        ASSERT_EQ(true, satisfyTolerance(Calculator::tan(GetParam()), tan(GetParam()), 0.0001));
+        ASSERT_EQ(true, satisfyTolerance(Calculator::tan(GetParam()), tan(GetParam()), 0.00001));
     }
 }
 
-INSTANTIATE_TEST_SUITE_P(MyTrigTest, TrigTest, ::testing::Values(-PI, 0, PI/6.0, PI/2.0, PI, 3.0*PI/2.0, 2.0*PI));
+INSTANTIATE_TEST_SUITE_P(MyTrigTest, TrigTest, testing::Range(0.0, 2.20*PI, 0.20*PI));
 
 int main(int argc, const char * argv[]) {
     testing::InitGoogleTest();

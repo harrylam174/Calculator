@@ -97,7 +97,7 @@ double Calculator::sine(double x) {
         sign = -sign;
     }
 
-    return round(result * 1000.0)/1000.0;
+    return result;
 }
 
 double Calculator::cosine(double x) {
@@ -120,7 +120,7 @@ double Calculator::cosine(double x) {
         sign = -sign;
     }
 
-    return round(result * 1000.0)/1000.0;
+    return result;
 }
 
 double Calculator::tan(double x) {
