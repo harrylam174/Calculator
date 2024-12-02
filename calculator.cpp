@@ -48,6 +48,7 @@ double Calculator::multiply(double x, double y) {
 }
 
 double Calculator::divide(double x, double y) {
+    if (y == 0) return NAN;
     return x / y;
 }
 
