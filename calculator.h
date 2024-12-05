@@ -1,8 +1,9 @@
-#define EULER_CONST 2.718281828459045235
+#define e 2.718281828459045235
 #define TAYLOR_ITERATIONS 50
 #define PI 3.1415926535897
 
 #include <string>
+#include "error.h"
 using namespace std;
 
 class Calculator {

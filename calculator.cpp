@@ -1,17 +1,21 @@
 #include "calculator.h"
 #include <cmath>
 #include <iostream>
+#include <limits>
+
+constexpr double MAX = numeric_limits<double>::max();
+constexpr double MIN = numeric_limits<double>::min();
 
 double ln(double x) {
     if (x <= 0) return NAN;
     int power = 0;
 
     while (x > 1.0) {
-        x /= EULER_CONST;
+        x /= e;
         power++;
     }
     while (x < .25) {
-        x *= EULER_CONST;
+        x *= e;
         power--;
     }
     
@@ -36,19 +40,55 @@ double Calculator::root(double x, int n) {
 }
 
 double Calculator::add(double x, double y) {
+    try {
+        if (x > 0 && y > MAX - x) Error::overflowError();
+        if (x < 0 && y < MIN - x) Error::underflowError();
+    }
+    catch (const std::exception &error) {
+        cout << error.what() << endl;
+        return 0;
+    }
     return x + y;
 }
 
 double Calculator::subtract(double x, double y) {
+    try {
+        if (x > 0 && y < MAX + x) Error::overflowError();
+        if (x < 0 && y > MIN + x) Error::underflowError();
+    }
+    catch (const std::exception &error) {
+        cout << error.what() << endl;
+        return 0;
+    }
     return x - y;
 }
 
 double Calculator::multiply(double x, double y) {
+    try {
+        if (x != 0 && y > MAX / x) Error::overflowError();
+        if (x != 0 && y < MIN / x) Error::underflowError();
+    }
+    catch (const std::exception &error) {
+        cout << error.what() << endl;
+        return 0;
+    }
     return x * y;
 }
 
 double Calculator::divide(double x, double y) {
     if (y == 0) return NAN;
+    try {
+        if (fabs(y) < 1) {
+            if (y > 0 && x > MAX * y) Error::overflowError();
+            if (y < 0 && x < MIN * y) Error::overflowError();
+            if (y > 0 && x < MIN * y) Error::underflowError();
+            if (y < 0 && x > MAX * y) Error::underflowError();
+        }
+    }
+    catch (const std::exception &error) {
+        cout << error.what() << endl;
+        return 0;
+    }
     return x / y;
 }
 
