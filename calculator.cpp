@@ -3,19 +3,20 @@
 #include <iostream>
 #include <limits>
 
-constexpr double MAX = numeric_limits<double>::max();
-constexpr double MIN = numeric_limits<double>::min();
+// This calculator will have a maximum of 11 digits precisions
+constexpr double MAX = 1000000000000.000;
+constexpr double MIN = -1000000000000.000;
 
 double ln(double x) {
     if (x <= 0) return NAN;
     int power = 0;
 
     while (x > 1.0) {
-        x /= e;
+        x /= euler;
         power++;
     }
     while (x < .25) {
-        x *= e;
+        x *= euler;
         power--;
     }
     
@@ -53,8 +54,8 @@ double Calculator::add(double x, double y) {
 
 double Calculator::subtract(double x, double y) {
     try {
-        if (x > 0 && y < MAX + x) Error::overflowError();
-        if (x < 0 && y > MIN + x) Error::underflowError();
+        if (x < 0 && y > MAX + x) Error::overflowError();
+        if (x > 0 && y < MIN + x) Error::underflowError();
     }
     catch (const std::exception &error) {
         cout << error.what() << endl;
@@ -65,8 +66,15 @@ double Calculator::subtract(double x, double y) {
 
 double Calculator::multiply(double x, double y) {
     try {
-        if (x != 0 && y > MAX / x) Error::overflowError();
-        if (x != 0 && y < MIN / x) Error::underflowError();
+        if (x == 0 || y == 0) return 0;
+        if (x > 0) {
+            if (y > 0 && y > MAX / x) Error::overflowError();
+            if (y < 0 && y < MIN / x) Error::underflowError();
+        }
+        if (x < 0) {
+            if (y < 0 && y < MIN / fabs(x)) Error::overflowError();
+            if (y > 0 && y > MAX / fabs(x)) Error::underflowError();
+        }
     }
     catch (const std::exception &error) {
         cout << error.what() << endl;
