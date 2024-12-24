@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12) # version can be different
-file(GLOB testResult_SRC "calculator.cpp" "precedence.cpp" "test.cpp")
+file(GLOB testResult_SRC "calculator.cpp" "precedence.cpp" "main.cpp")
 set(CXXFLAGS "-std=c++17 -Wall")
 set(CMAKE_CXX_FLAGS "${CXXFLAGS}")
 set(GOOGLETEST_VERSION 1.15.2)

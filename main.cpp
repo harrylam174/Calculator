@@ -1,11 +1,20 @@
-#include "calculator.h"
+#include "test.cpp"
 #include <iostream>
 
+int unitTest() {
+    testing::internal::CaptureStdout();
+    testing::InitGoogleTest();
+    return RUN_ALL_TESTS();
+}
+
 int main(int argc, const char * argv[]) {
-    double num1 = Calculator::add(2, 2);
-    double num2 = Calculator::power(3, 2);
-    double result = Calculator::factorial(num2 - num1);
-    cout << result << endl;
+    int testResult = unitTest();
+    string error = testing::internal::GetCapturedStdout();
+    if (testResult != 0) {
+        cout << error << endl;
+        return 1;
+    }
+    cout << Calculator::add(1, 1) << endl;
 }
 
 

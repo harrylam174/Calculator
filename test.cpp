@@ -65,9 +65,3 @@ TEST(PRECEDENCE, SIMPLE) {
 }
 
 INSTANTIATE_TEST_SUITE_P(MyTrigTest, TrigTest, testing::Range(0.0, 2.20*PI, 0.20*PI));
-
-int main(int argc, const char * argv[]) {
-    testing::InitGoogleTest();
-    return RUN_ALL_TESTS();
-}
-
