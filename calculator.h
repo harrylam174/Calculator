@@ -1,8 +1,8 @@
 /**
  * @class: Calculator calculator.h
  * @brief: A class that contain all the calculator's information and valid operations
- * @copyright: Copyright 2024 Harry Lam. All Rights Reserved
-*/
+ * @copyright: Copyright 2024 Harry Lam. All Rights Reserved.
+ **/
 
 #define euler 2.718281828459045235
 #define TAYLOR_ITERATIONS 50
@@ -14,6 +14,7 @@ using namespace std;
 
 class Calculator {
     private:
+        /** @brief: A list of calculator's information */ 
         static const int version = 1;                       /** Calculator Version */
         inline static const string name = "My Calculator";  /** Calculator Name */
         inline static const string author = "Harry Lam";    /** Calculator Author */
