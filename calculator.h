@@ -133,7 +133,7 @@ class Calculator {
          **/
         static double arccos(double x);
 
-        /** @arcsin: return the inverse of tan of a value
+        /** @arctan: return the inverse of tan of a value
          * @param x: a double
          * @return: a double representing arctan(x)
          **/
