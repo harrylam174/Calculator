@@ -14,7 +14,6 @@ int main(int argc, const char * argv[]) {
         cout << error << endl;
         return 1;
     }
-    cout << Calculator::add(1, 1) << endl;
 }
 
 

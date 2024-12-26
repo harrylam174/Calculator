@@ -4,8 +4,8 @@
 #include <limits>
 
 // This calculator will have a maximum of 11 digits precisions
-constexpr double MAX = 1000000000000.000;
-constexpr double MIN = -1000000000000.000;
+constexpr double MAX = 1000000000000.0;
+constexpr double MIN = -1000000000000.0;
 
 double ln(double x) {
     if (x <= 0) return NAN;
@@ -41,61 +41,39 @@ double Calculator::root(double x, int n) {
 }
 
 double Calculator::add(double x, double y) {
-    try {
-        if (x > 0 && y > MAX - x) Error::overflowError();
-        if (x < 0 && y < MIN - x) Error::underflowError();
-    }
-    catch (const std::exception &error) {
-        cout << error.what() << endl;
-        return 0;
-    }
+    if (x > 0 && y > MAX - x) Error::overflowError();
+    if (x < 0 && y < MIN - x) Error::underflowError();
     return x + y;
 }
 
 double Calculator::subtract(double x, double y) {
-    try {
-        if (x < 0 && y > MAX + x) Error::overflowError();
-        if (x > 0 && y < MIN + x) Error::underflowError();
-    }
-    catch (const std::exception &error) {
-        cout << error.what() << endl;
-        return 0;
-    }
+    if (x < 0 && y > MAX + x) Error::underflowError();
+    if (x > 0 && y < MIN + x) Error::overflowError();
     return x - y;
 }
 
 double Calculator::multiply(double x, double y) {
-    try {
-        if (x == 0 || y == 0) return 0;
-        if (x > 0) {
-            if (y > 0 && y > MAX / x) Error::overflowError();
-            if (y < 0 && y < MIN / x) Error::underflowError();
-        }
-        if (x < 0) {
-            if (y < 0 && y < MIN / fabs(x)) Error::overflowError();
-            if (y > 0 && y > MAX / fabs(x)) Error::underflowError();
-        }
+    if (x == 0 || y == 0) return 0;
+    if (x > 0) {
+        if (y > 0 && y > MAX / x) Error::overflowError();
+        if (y < 0 && y < MIN / x) Error::underflowError();
     }
-    catch (const std::exception &error) {
-        cout << error.what() << endl;
-        return 0;
+    if (x < 0) {
+        if (y < 0 && y < MIN / fabs(x)) Error::overflowError();
+        if (y > 0 && y > MAX / fabs(x)) Error::underflowError();
     }
     return x * y;
 }
 
 double Calculator::divide(double x, double y) {
     if (y == 0) return NAN;
-    try {
-        if (fabs(y) < 1) {
-            if (y > 0 && x > MAX * y) Error::overflowError();
-            if (y < 0 && x < MIN * y) Error::overflowError();
-            if (y > 0 && x < MIN * y) Error::underflowError();
-            if (y < 0 && x > MAX * y) Error::underflowError();
-        }
+    if (y > 0 && y < 1) {
+        if (x > 0 && x > MAX * y) Error::overflowError();
+        if (x < 0 && x < MIN * y) Error::underflowError();
     }
-    catch (const std::exception &error) {
-        cout << error.what() << endl;
-        return 0;
+    if (y < 0 && y > -1) {
+        if (x > 0 && x > MIN * y) Error::underflowError();
+        if (x < 0 && x < MAX * y) Error::overflowError();
     }
     return x / y;
 }

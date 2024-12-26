@@ -13,7 +13,6 @@ class Calculator {
         inline static const string author = "Harry Lam";
     
     private:
-        bool save = false;
         static double root(double x, int n);
 
     public:
