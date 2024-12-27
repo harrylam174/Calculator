@@ -51,7 +51,7 @@
  * @param v2: a double represent the second value
  * @return: true if the absolute difference between v1 and v2 is no more than tolerance, false otherwise
 */
-bool satisfyTolerance(double v1, double v2, double tolerance = 0.00001) {
+bool satisfyTolerance(double v1, double v2, double tolerance = 0.00000000001) {
     return abs(v1 - v2) < tolerance;
 }
 
