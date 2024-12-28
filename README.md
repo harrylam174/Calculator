@@ -17,6 +17,7 @@ Except for basic arithmetics, all other functions will be implemented not via bu
 -  [Installation](#installation)
 -  [Usage & Requirements](#usage--requirements)
 -  [Include Test](#include-test)
+-  [Known Issues](#known-issues)
 -  [More Information](#more-information)
 
 
@@ -69,8 +70,14 @@ As of right now, the tests include:
 -  Advanced (power, logarithm, factorial)
 -  Basic trigonometric functions (sin, cos, tan)
 
+## Known Issues
+
+-  (Dec 27, 2024) Operations related to equation validation & conversion has not been tested yet (so it may not compile or can be wrong)
+
 ## More Information
 
 -  The `precedence.h` file store the rank order of math operations/functions, and functions on comparing order of precedence
 -  The `equation.h` file store functions on equation validation (correct parenthesis, correct unary/binary application, etc.), conversion (to postfix), and evaluation on postfix
 -  The `error.h` file store all error messages that math operations can occur.
+
+  
